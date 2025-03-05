@@ -1,0 +1,428 @@
+/* style.css */
+:root {
+    --primary-color: #1976d2;
+    --secondary-color: #e3f2fd;
+    --border-color: #cfd8dc;
+    --text-primary: #263238;
+    --text-secondary: #607d8b;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(rgba(225, 245, 254, 0.9), rgba(225, 245, 254, 0.9)),
+                url('/static/images/img.png');
+    background-size: cover;
+    font-family: 'Segoe UI', sans-serif;
+    color: var(--text-primary);
+}
+
+/* 容器布局 */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.app-header {
+    padding: 0 20px 20px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+.beta-tag {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-left: 8px;
+}
+
+/* 主布局 */
+.main-wrapper {
+    display: flex;
+    gap: 15px;
+    height: calc(100vh - 100px);
+    margin-top: 20px;
+}
+
+/* 左侧侧边栏 */
+/* 左侧侧边栏：固定宽度、垂直排列 */
+.sidebar {
+    width: 60px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    gap: 20px;
+}
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    background: var(--secondary-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    min-width: 300px;
+}
+.modal-close {
+    float: right;
+    cursor: pointer;
+    font-size: 16px;
+    color: #888;
+}
+
+/* 主聊天区 */
+.chat-container {
+    flex: 3;
+    background: rgba(255,255,255,0.95);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 12px;
+}
+
+.message {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+.user-message {
+    flex-direction: row-reverse;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 15px;
+}
+
+.bubble {
+    max-width: 70%;
+    padding: 15px 20px;
+    border-radius: 20px;
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+.ai-message .bubble {
+    background: #f5f5f5;
+    border-radius: 20px 20px 20px 5px;
+}
+
+.user-message .bubble {
+    background: var(--secondary-color);
+    border-radius: 20px 20px 5px 20px;
+}
+
+.examples {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.example-btn {
+    padding: 15px;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.example-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+.example-title {
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.example-text {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* 输入区域 */
+.input-container {
+    padding: 20px;
+    border-top: 1px solid #eee;
+}
+
+.input-group {
+    position: relative;
+}
+
+#userInput {
+    width: 100%;
+    min-height: 150px;       /* 最小高度，比如1-2行 */
+    max-height: 400px;      /* 最大高度，假设对应五行 */
+    padding: 16px 160px 16px 20px;
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+    font-size: 15px;
+    box-sizing: border-box;
+    overflow-y: auto;       /* 超过最大高度时显示滚动条 */
+    resize: none;           /* 禁止用户手动调整 */
+    white-space: pre-wrap;  /* 自动换行 */
+    word-break: break-word;
+}
+
+
+.upload-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.upload-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.mode-buttons {
+    position: absolute;
+    bottom: 12px;
+    left: 20px;
+    display: flex;
+    gap: 8px;
+}
+
+.mode-btn {
+    padding: 4px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    background: white;
+    font-size: 12px;
+    transition: all 0.2s;
+}
+
+.mode-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.input-group > button {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 40px;
+    width: 80px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* 右侧工具区 */
+.tools-panel {
+    flex:5;
+    background: rgba(255,255,255,0.95);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+.tool-tabs {
+    display: flex;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.tab-btn {
+    padding: 8px 16px;
+    border: none;
+    background: rgba(25, 118, 210, 0.1);
+    color: var(--primary-color);
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tab-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.tool-content {
+    flex: 1;
+    margin: 8px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f8f9fa;
+}
+
+.tool-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+/* 步骤消息样式 */
+.step-container {
+    margin: 15px 0;
+}
+
+.step-bubble {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 8px 0;
+    position: relative;
+}
+
+.step-number {
+    position: absolute;
+    left: -25px;
+    top: 15px;
+    width: 20px;
+    height: 20px;
+    background: #1976d2;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.confirm-box {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.confirm-btn {
+    padding: 8px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.confirm-btn.accept {
+    background: #1976d2;
+    color: white;
+}
+
+.confirm-btn.reject {
+    background: #fff;
+    border: 1px solid #1976d2;
+    color: #1976d2;
+}
+/* 任务进度样式 */
+.task-list {
+    margin-top: 20px;
+}
+
+.task-item {
+    margin: 15px 0;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.task-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.task-status {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.task-desc {
+    flex: 1;
+    color: #333;
+}
+
+.task-percent {
+    color: #666;
+    font-size: 14px;
+}
+
+.progress-bar {
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #1976d2;
+    border-radius: 4px;
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+
